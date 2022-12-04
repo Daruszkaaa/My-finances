@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.scss'
 import {createRoot} from "react-dom/client";
 import {Route, Routes, BrowserRouter as Router} from "react-router-dom";
 

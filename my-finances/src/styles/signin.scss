@@ -1,0 +1,40 @@
+.signin-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: absolute;
+  h2{
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+    bottom: 210px
+  }
+  .signin-logo{
+color: brown;
+    font-size: 36px;
+
+  }
+  img{
+    width: 40%;
+  }
+  .signin-form-container{
+    text-align: center;
+
+
+h1{
+  font-size: 28px;
+  font-weight: bold;
+}
+    span{
+      margin: 8px
+    }
+    button{
+      height: 30px;
+    }
+    p{
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  }
+}
