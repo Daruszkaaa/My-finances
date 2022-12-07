@@ -1,0 +1,19 @@
+
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+
+  .navbar-menu {
+    margin: 10px;
+  }
+
+  button {
+    background-color: #9c5937;
+
+    button:hover {
+      background-color: #9c5937;
+    }
+  }
+}

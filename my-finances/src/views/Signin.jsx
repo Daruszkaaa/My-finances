@@ -3,6 +3,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import illustraction from "../assets/free-flat-business-vector-01o9r.webp"
+import NavBar from "../components/NavBar.jsx";
 
 export default function Signin() {
     const navigate = useNavigate();
@@ -15,8 +16,9 @@ export default function Signin() {
 
         return (
             <div className="signin-container">
-                <h2><span className="signin-logo">My</span>finances</h2>
-                <img src={illustraction}/>
+                <div className='signin-menu'>
+                    <h1 className= "logo"><span>My</span>Finances</h1>
+                </div>
                 <div className="signin-form-container">
                     <h1>LOGOWANIE</h1>
                     <br/>
@@ -32,7 +34,7 @@ export default function Signin() {
                     </span>
                         <br/>
                         <br />
-                        <Button label="Zaloguj" />
+                        <Button onClick={() => navigate('/finance')} label="Zaloguj" />
                         <br />
                         <p>Nie masz jeszcze konta?</p>
                         <Button onClick={() => navigate('/signup')} label="Załóż konto" className="p-button-link" />

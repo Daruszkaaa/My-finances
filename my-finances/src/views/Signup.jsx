@@ -2,7 +2,8 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
-import illustraction from "../assets/free-flat-business-vector-01o9r.webp"
+import { Checkbox } from 'primereact/checkbox';
+
 
     export default function Signup() {
         const navigate = useNavigate();
@@ -13,8 +14,9 @@ import illustraction from "../assets/free-flat-business-vector-01o9r.webp"
 
         return(
      <div className="signup-container">
-         <h2><span className="signup-logo">My</span>finances</h2>
-         <img src={illustraction}/>
+         <div className='signup-menu'>
+             <h1 className= "logo"><span>My</span>Finances</h1>
+         </div>
          <div className="signup-form-container">
              <h1>REJESTRACJA</h1>
              <br />
@@ -36,7 +38,7 @@ import illustraction from "../assets/free-flat-business-vector-01o9r.webp"
                     <i className="pi pi-lock" />
                     <InputText placeholder="Powtórz hasło"/>
                  </span>
-                 <Button label="Załóż konto" />
+                         <Button onClick={() => navigate('/finance')} label="Załóż konto" />
                  <br />
                  <Button onClick={() => navigate('/signin')} label="Masz już konto?" className="p-button-link" />
              </form>

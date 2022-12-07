@@ -1,44 +1,53 @@
-.signup-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  position: absolute;
-  padding: 20px;
+@media (max-width: 900px) {
 
-  h2{
-    font-size: 28px;
-    font-weight: bold;
-    position: relative;
-    bottom: 210px
-
-  }
-  .signup-logo{
-    color: brown;
-    font-size: 36px;
-
-  }
-  img{
-    width: 40%;
-  }
-  .signup-form-container{
-    text-align: center;
-    border: 1px solid lightsteelblue;
+  .signup-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     padding: 20px;
 
+    .signup-menu{
+      font-family: 'Indie Flower', cursive;
+      font-family: 'Klee One', cursive;
+      padding: 20px;
+      .logo {
+        font-size: 16px;
+        color: #9c5937;
+
+        span {
+          font-size: 26px;
+          color: #6a2f23;
+          font-weight: bold;
+        }
+      }
+    }
+    .signup-form-container {
+      text-align: center;
+      border: 1px solid lightsteelblue;
+      padding: 20px;
 
 
-    h1{
-      font-size: 28px;
-      font-weight: bold;
-    }
-    span{
-      margin: 8px
-    }
-    button{
-      height: 30px;
-      margin-top: 10px;
-      font-size: 16px;
+      h1 {
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      span {
+        margin: 8px
+      }
+
+      button {
+        margin-top: 8px;
+
+        height: 30px;
+      }
+
+      p {
+        margin-top: 10px;
+        font-size: 16px;
+      }
     }
   }
 }
