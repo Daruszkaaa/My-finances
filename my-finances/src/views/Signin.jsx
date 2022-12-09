@@ -1,36 +1,49 @@
-import React from "react";
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
-import illustraction from "../assets/free-flat-business-vector-01o9r.webp"
-import NavBar from "../components/NavBar.jsx";
+import { Password } from 'primereact/password';
+import supabase from '../services/supabase.js';
+import photo from '../assets/AdobeStock_509395296.jpeg'
 
 export default function Signin() {
     const navigate = useNavigate();
 
-    const singinUser = async (e) => {
+    const signinUser = async (e) => {
         e.preventDefault();
 
         const [email, password] = e.target.elements;
+
+        let {data: {user, error}} = await supabase.auth.signInWithPassword({
+            email: email.value,
+            password: password.value,
+        });
+
+        if (error) {
+            error('Logowanie nie powiodło się');
+        }
+
     }
 
         return (
-            <div className="signin-container">
+            <div className="signin">
                 <div className='signin-menu'>
                     <h1 className= "logo"><span>My</span>Finances</h1>
                 </div>
-                <div className="signin-form-container">
-                    <h1>LOGOWANIE</h1>
+                <div className="signin-container">
+                    <img src={photo}/>
+
+                    <div className="signin-form-container">
+                    <h2>LOGOWANIE</h2>
                     <br/>
-                    <form onSubmit={(e) => singinUser(e)} className='signin-form'>
-                <span className="p-input-icon-left">
+                    <form onSubmit={(e) => signinUser(e)} className='signin-form'>
+                <span className="p-input-icon-right">
                     <i className="pi pi-envelope"/>
                     <InputText placeholder="Email"/>
                 </span>
                         <br/>
                         <span className="p-input-icon-left">
             <i className="pi pi-lock"/>
-                    <InputText placeholder="Hasło"/>
+                  <Password placeholder="Password" toggleMask feedback={false}/>
                     </span>
                         <br/>
                         <br />
@@ -40,6 +53,7 @@ export default function Signin() {
                         <Button onClick={() => navigate('/signup')} label="Załóż konto" className="p-button-link" />
                     </form>
                 </div>
+            </div>
             </div>
         )
     }

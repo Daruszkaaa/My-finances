@@ -2,46 +2,85 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
-import { Checkbox } from 'primereact/checkbox';
+import {Password} from "primereact/password";
+import { Toast } from 'primereact/toast';
+import supabase from "../services/supabase.js";
+import photo from '../assets/AdobeStock_509395296.jpeg'
+
+export default function Signup() {
+
+    const navigate = useNavigate();
+    const errorToast = useRef(null);
+
+    const signupUser = async (e) => {
+        e.preventDefault();
+
+const [ ,email, password, repassword ] = e.target.elements;
+console.log(password.value, repassword.value)
+
+if (password.value !== repassword.value) {
+    errorToast.current.show({severity: 'error', summary: 'Error', detail: 'Password and re-entered password must be the same'});
+    return;
+}
+
+let { data: { user, error }} = await supabase.auth.signUp({
+    email: email.value,
+    password: password.value,
+});
 
 
-    export default function Signup() {
-        const navigate = useNavigate();
-        const errorToast = useRef(null);
+if (error) {
+    errorToast.current.show({severity: 'error', summary: 'Error', detail: 'An error occured. Please try again later.'});
+    return;
+}
 
-        navigate ('/');
+navigate('/finance');
+
+}
 
 
         return(
-     <div className="signup-container">
+
+     <div className="signup">
          <div className='signup-menu'>
-             <h1 className= "logo"><span>My</span>Finances</h1>
-         </div>
+         <h1 className= "logo"><span>My</span>Finances</h1>
+     </div>
+         <div className="signup-container">
+<img src={photo}/>
+
          <div className="signup-form-container">
-             <h1>REJESTRACJA</h1>
+             <Toast ref={errorToast} />
+             <h2>REJESTRACJA</h2>
              <br />
              <form onSubmit={(e) => signupUser(e)} className='signup-form'>
-                <span className="p-input-icon-left">
+                 {/*IMIĘ*/}
+                 <span className="p-input-icon-right">
                     <i className="pi pi-user" />
                     <InputText placeholder="Imię" />
                 </span>
-                 <span className="p-input-icon-left">
+                 {/*EMAIL*/}
+                 <span className="p-input-icon-right">
                     <i className="pi pi-envelope" />
-                    <InputText placeholder="E-mail" />
+                    <InputText placeholder="E-mail" required/>
+
                  </span>
                  <br />
+                 {/*HASŁO*/}
                  <span className="p-input-icon-left">
                     <i className="pi pi-lock" />
-                    <InputText placeholder="Hasło"/>
+                  <Password placeholder="Hasło" toggleMask feedback={false} required/>
                  </span>
+                 {/*POWTÓRZ HASŁO */}
                  <span className="p-input-icon-left">
                     <i className="pi pi-lock" />
-                    <InputText placeholder="Powtórz hasło"/>
+                     <Password placeholder="Powtórz hasło" toggleMask feedback={false} required/>
                  </span>
-                         <Button onClick={() => navigate('/finance')} label="Załóż konto" />
+                 <br/>
+                 <Button type={"submit"} label="Załóż konto" />
                  <br />
                  <Button onClick={() => navigate('/signin')} label="Masz już konto?" className="p-button-link" />
              </form>
+         </div>
          </div>
      </div>
     )

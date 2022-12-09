@@ -1,36 +1,44 @@
-@media (max-width: 900px) {
+.signup {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 90vh;
+  margin-right: 20px;
+  .signup-menu {
+    padding:10px;
+    font-family: 'Indie Flower', cursive;
+    font-family: 'Klee One', cursive;
+
+    .logo {
+      font-size: 26px;
+      color: #9c5937;
+      margin-bottom: 20px;
+
+      span {
+        font-size: 36px;
+        color: #6a2f23;
+        font-weight: bold;
+      }
+    }
+  }
 
   .signup-container {
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
-    width: 100%;
-    padding: 20px;
 
-    .signup-menu{
-      font-family: 'Indie Flower', cursive;
-      font-family: 'Klee One', cursive;
-      padding: 20px;
-      .logo {
-        font-size: 16px;
-        color: #9c5937;
-
-        span {
-          font-size: 26px;
-          color: #6a2f23;
-          font-weight: bold;
-        }
-      }
+    img {
+      max-width: 60%;
     }
+
     .signup-form-container {
       text-align: center;
-      border: 1px solid lightsteelblue;
-      padding: 20px;
+      border: 1px solid grey;
+      padding: 15px;
 
 
-      h1 {
-        font-size: 22px;
+      h2 {
+        font-size: 20px;
         font-weight: bold;
       }
 
@@ -40,14 +48,9 @@
 
       button {
         margin-top: 8px;
-
         height: 30px;
       }
 
-      p {
-        margin-top: 10px;
-        font-size: 16px;
-      }
     }
   }
 }

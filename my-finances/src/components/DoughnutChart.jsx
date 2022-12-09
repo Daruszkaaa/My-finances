@@ -9,7 +9,14 @@ export default function DoughnutChart(){
     const navigate = useNavigate();
 
     const [options] = useState({
-        labels: ['Jedzenie', 'Opłaty', 'Transport', 'Zdrowie','Zabawa','Jedzenie poza domem','Przybory toaletowe','Inne'],
+        labels: [
+            'Jedzenie',
+            'Opłaty',
+            'Transport',
+            'Zdrowie',
+            'Zabawa',
+            'Jedzenie poza domem',
+            'Przybory toaletowe','Inne'],
         datasets: [
             {
                 data: [300, 50, 100, 70, 60, 90, 60, 80],
@@ -37,10 +44,19 @@ export default function DoughnutChart(){
                 ]
             }]
     });
+    const [lightOptions] = useState({
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#495057'
+                }
+            }
+        }
+    });
 
     return (
-        <div className="doughnut">
-            <Chart type="doughnut" data={options}   />
+        <div className="card">
+            <Chart type="doughnut" data={options} options={lightOptions} style={{ position: 'relative', width: '40%' }} />
         </div>
     )
 }

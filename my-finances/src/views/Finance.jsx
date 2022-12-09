@@ -6,21 +6,23 @@ import Expense from "../components/Expense.jsx";
 import Balance from "../components/Balance";
 
 export default function Finance(){
+
     return(
-        <div className="finance-container">
-         <div className='finance-menu'>
+        <div className= 'finance'>
+        <div className='finance-menu'>
          <NavBar />
             <h1 className= "logo"><span>My</span>Finances</h1>
-         </div>
-             <div className="finance-box">
+            </div>
+            <div className='finance-container'>
+                <div className="finance-chart">
                  <DoughnutChart/>
-             </div>
+            </div>
                  <div className="finance-calculations">
                  <Profit />
                  <Balance />
                  <Expense />
                      </div>
-
+        </div>
         </div>
     )
 }
