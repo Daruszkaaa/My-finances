@@ -22,18 +22,51 @@
   .finance-container {
     .finance-chart {
       .card {
-        margin-top: 30px;
+        margin-top: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        .expenses-box {
+          margin-top: 70px;
+          border-left: 1px solid grey;
+          padding: 20px;
+
+          li {
+            padding: 5px;
+          }
+        }
+      }
+
+      .calculation-box {
+        margin-top: 20px;
+        width: 200px;
+      }
+    }
+  }
+    .finance-calculations {
+      padding: 20px;
+      margin-left: 20px;
+      position: absolute;
+      top: 240px;
+
+      .balance {
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+
+      .profit-box {
+        color: green;
+        margin-bottom: 5px;
+      }
+
+      .expenses-box {
+        color: red;
+      }
+        .profitexpenses-box {
+          margin-top: 25px;
+          width: 220px;
+        }
       }
     }
 
-    .finance-calculations {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-  }
-}

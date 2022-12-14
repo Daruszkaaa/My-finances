@@ -9,7 +9,7 @@ import Signup from "./views/Signup.jsx";
 
 //COMPONENTS
 import NavBar from "./components/NavBar.jsx";
-import DoughnutChart from "./components/DoughnutChart.jsx";
+import DoughnutChart from "./components/Chart.jsx";
 
 function App() {
   return (

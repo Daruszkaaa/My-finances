@@ -13,17 +13,19 @@ export default function Signin() {
 
         const [email, password] = e.target.elements;
 
-        let {data: {user, error}} = await supabase.auth.signInWithPassword({
-            email: email.value,
-            password: password.value,
-        });
+        let
+            {data: {user, error}} = await supabase.auth.signInWithPassword({
+                email: email.value,
+                password: password.value,
+            });
 
         if (error) {
             error('Logowanie nie powiodło się');
         }
-
-    }
-
+        if (user) {
+            navigate("/finance");
+        }
+    };
         return (
             <div className="signin">
                 <div className='signin-menu'>
@@ -47,7 +49,7 @@ export default function Signin() {
                     </span>
                         <br/>
                         <br />
-                        <Button onClick={() => navigate('/finance')} label="Zaloguj" />
+                        <Button type={"submit"}  label="Zaloguj" />
                         <br />
                         <p>Nie masz jeszcze konta?</p>
                         <Button onClick={() => navigate('/signup')} label="Załóż konto" className="p-button-link" />
