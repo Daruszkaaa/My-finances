@@ -1,63 +1,70 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Chart } from "primereact/chart";
 import {InputNumber} from "primereact/inputnumber";
-
+import supabase from "../services/supabase.js";
 
 export default function Diagram () {
-    const [inputExpensesValue, setInputExpensesValue] = useState('')
-    const [activeLabel, setActiveLabel] = useState(null);
 
-    const [chartData, setChartData] = useState({
-        labels: [
-            "Jedzenie",
-            "Opłaty",
-            "Transport",
-            "Zdrowie",
-            "Zabawa",
-            "Jedzenie poza domem",
-            "Przybory toaletowe",
-            "Inne",
-        ],
-        datasets: [
-            {
-                data: [1, 0, 0, 0, 0, 0, 0, 0],
-                backgroundColor: [ '#e75e36',
-                    "#e38a21",
-                    "#eac54e",
-                    "#f2e989",
-                    "#f8efb8",
-                    "#411311",
-                    "#6a2f23",
-                    "#9c5937",
-                    "#d48f4c",],
-                hoverBackgroundColor: [ '#e75e36',
-                    "#e38a21",
-                    "#eac54e",
-                    "#f2e989",
-                    "#f8efb8",
-                    "#411311",
-                    "#6a2f23",
-                    "#9c5937",
-                    "#d48f4c",],
-            },
-        ],
-    });
+    const userFinance = async () => {
+        let {data: user_id,} = await supabase
+            .from('user_id')
+            .select("*")
+            .eq('id', user_id);
+    }
 
-    const addValue = () => {
-        setChartData({
-            ...chartData,
+
+        const [inputExpensesValue, setInputExpensesValue] = useState('')
+        const [activeLabel, setActiveLabel] = useState(null);
+        const [chartData, setChartData] = useState({
+            labels: [
+                "Zakupy spożywcze",
+                "Opłaty",
+                "Transport",
+                "Zdrowie",
+                "Zabawa",
+                "Jedzenie poza domem",
+                "Przybory toaletowe",
+                "Inne",
+            ],
             datasets: [
                 {
-                    ...chartData.datasets[0],
-                    data: chartData.datasets[0].data.map((el, id) => {
-                        if (id === activeLabel) return el + inputExpensesValue;
-                        else return el;
-                    }),
+                    data: [1, 0, 0, 0, 0, 0, 0, 0],
+                    backgroundColor: ['#e75e36',
+                        "#e38a21",
+                        "#eac54e",
+                        "#f2e989",
+                        "#f8efb8",
+                        "#411311",
+                        "#6a2f23",
+                        "#9c5937",
+                        "#d48f4c",],
+                    hoverBackgroundColor: ['#e75e36',
+                        "#e38a21",
+                        "#eac54e",
+                        "#f2e989",
+                        "#f8efb8",
+                        "#411311",
+                        "#6a2f23",
+                        "#9c5937",
+                        "#d48f4c",],
                 },
             ],
         });
-    };
 
+        const addValue = () => {
+            setChartData({
+                ...chartData,
+                datasets: [
+                    {
+                        ...chartData.datasets[0],
+                        data: chartData.datasets[0].data.map((el, id) => {
+                            if (id === activeLabel) return el + inputExpensesValue;
+                            else return el;
+                        }),
+                    },
+                ],
+            });
+        };
 
     useEffect(() => {
         console.log(chartData);

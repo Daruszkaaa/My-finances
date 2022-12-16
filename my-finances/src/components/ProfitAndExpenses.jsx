@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Button} from "primereact/button";
 import {InputNumber} from "primereact/inputnumber";
+import supabase from "../services/supabase.js";
 
 export default function ProfitAndExpenses() {
 

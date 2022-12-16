@@ -19,7 +19,7 @@ const [ ,email, password, repassword ] = e.target.elements;
 console.log(password.value, repassword.value)
 
 if (password.value !== repassword.value) {
-    errorToast.current.show({severity: 'error', summary: 'Error', detail: 'Password and re-entered password must be the same'});
+    errorToast.current.show({severity: 'error', summary: 'Error', detail: 'Hasła muszą być takie same'});
     return;
 }
 

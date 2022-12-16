@@ -3,10 +3,16 @@ import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import { Password } from 'primereact/password';
 import supabase from '../services/supabase.js';
+import {useRef} from "react";
 import photo from '../assets/AdobeStock_509395296.jpeg'
+import { Toast } from 'primereact/toast';
+
 
 export default function Signin() {
     const navigate = useNavigate();
+
+    const errorToast = useRef(null);
+
 
     const signinUser = async (e) => {
         e.preventDefault();
@@ -20,12 +26,15 @@ export default function Signin() {
             });
 
         if (error) {
-            error('Logowanie nie powiodło się');
+            toast.current.show({severity:'error', summary: 'Error Message', detail:'Message Content'});
+
         }
         if (user) {
             navigate("/finance");
         }
     };
+
+
         return (
             <div className="signin">
                 <div className='signin-menu'>
@@ -35,7 +44,8 @@ export default function Signin() {
                     <img src={photo}/>
 
                     <div className="signin-form-container">
-                    <h2>LOGOWANIE</h2>
+                        <Toast ref={errorToast} />
+                        <h2>LOGOWANIE</h2>
                     <br/>
                     <form onSubmit={(e) => signinUser(e)} className='signin-form'>
                 <span className="p-input-icon-right">
